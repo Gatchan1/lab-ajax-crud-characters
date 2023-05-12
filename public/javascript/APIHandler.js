@@ -16,11 +16,11 @@ class APIHandler {
     return axios.post(this.charactersURL, newCharacterData)
   }
 
-  updateOneRegister () {
-
+  updateOneRegister (id, updatedCharacterData) { 
+    return axios.put(this.charactersURL + "/" + id, updatedCharacterData) // puuuut!!
   }
 
-  deleteOneRegister (id) {
-    return axios.delete(this.charactersURL + "/" + id)
+  deleteOneRegister (id) { 
+    return axios.delete(this.charactersURL + "/" + id) // deleteeee!!
   }
 }

@@ -26,15 +26,27 @@ window.addEventListener('load', () => {
 
   //Al loro, estos dos siguientes son event listeners de tipo submit, y no de tipo click! Los parámetros se guardan EN LA URL, A NO SER QUE EVITEMOS EL PAGE RELOAD a través del event.preventDefault()
   document.getElementById('edit-character-form').addEventListener('submit', function (event) {
+    event.preventDefault()
+    const id = document.querySelector("#updateId").value
+    const name = document.querySelector("#updateName").value
+    const occupation = document.querySelector("#updateOccupation").value
+    const weapon = document.querySelector("#UpdateWeapon").value
+    const cartoon = document.querySelector("#updateCartoon").checked // ojo, que este no es value
+    const updatedCharacterInfo = {name, occupation, weapon, cartoon}
+    charactersAPI.updateOneRegister(id, updatedCharacterInfo)
+    .then(()=>{
+      console.log("Element succesfully updated!")
+    })
+    .catch((err) => console.log(err))
 
   });
 
   document.getElementById('new-character-form').addEventListener('submit', function (event) {
     event.preventDefault()
-    const name = document.querySelector("#name").value
-    const occupation = document.querySelector("#occupation").value
-    const weapon = document.querySelector("#weapon").value
-    const cartoon = document.querySelector("#cartoon").checked // ojo, que este no es value
+    const name = document.querySelector("#newName").value
+    const occupation = document.querySelector("#newOccupation").value
+    const weapon = document.querySelector("#newWeapon").value
+    const cartoon = document.querySelector("#newCartoon").checked // ojo, que este no es value
     newCharacterInfo = {name, occupation, weapon, cartoon}
     // console.log("Create this character: ", newCharacterInfo)
     charactersAPI.createOneRegister(newCharacterInfo)

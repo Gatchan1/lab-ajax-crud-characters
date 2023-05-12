@@ -20,6 +20,13 @@
       "weapon": "computer",
       "cartoon": false,
       "id": 3
+    },
+    {
+      "name": "Lisa",
+      "occupation": "chica",
+      "weapon": "patada",
+      "cartoon": false,
+      "id": 4
     }
   ]
 }
